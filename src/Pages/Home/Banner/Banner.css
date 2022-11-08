@@ -1,0 +1,8 @@
+.banner {
+  background: linear-gradient(to right, #151515 0%, rgba(21, 21, 21, 0) 100%),
+    url(../../../assets/header-bg-1.jpg);
+  min-height: 92vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
