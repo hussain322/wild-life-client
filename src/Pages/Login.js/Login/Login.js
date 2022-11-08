@@ -6,11 +6,9 @@ import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="login-container">
-      <div className="w-3/4 md:w-1/2 lg:w-[35%] mx-auto pt-20">
-        <h1 className="text-4xl font-bold text-white text-center">
-          Welcome to Login
-        </h1>
-        <form className="pt-10">
+      <div className="w-5/6 md:w-1/2 lg:w-[35%] mx-auto pt-20">
+        <form className="pt-10 form-container p-10">
+          <h1 className="text-4xl font-bold text-white text-center">Login</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-white">Email</span>
@@ -37,24 +35,24 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-green-600 hover:bg-green-700">
+            <button className="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-600">
               Login
             </button>
           </div>
+          <div className="text-white pt-4">
+            Doesn't have account yet?
+            <Link to="/signup" className="font-semibold ml-2">
+              Sign Up
+            </Link>
+          </div>
+          <p className="text-white text-center pt-2">or</p>
+          <div className="pt-4 text-center">
+            <button className="btn btn-primary">
+              <img src={googleIcon} alt="" className="w-5 mr-4" />
+              sign in with google
+            </button>
+          </div>
         </form>
-        <div className="text-white pt-4">
-          Doesn't have account yet?
-          <Link to="/signup" className="font-semibold ml-2">
-            Sign Up
-          </Link>
-        </div>
-        <p className="text-white text-center pt-2">or</p>
-        <div className="pt-4 text-center">
-          <button className="btn btn-primary">
-            <img src={googleIcon} alt="" className="w-5 mr-4" />
-            sign in with google
-          </button>
-        </div>
       </div>
     </div>
   );

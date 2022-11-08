@@ -5,7 +5,7 @@ import photographer from "../../../assets/photographer.png";
 function ProgressBar() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] mx-auto">
-      <div>
+      <div className="mt-6">
         <img src={photographer} alt="" className="w-3/4" />
       </div>
       <div className="container">

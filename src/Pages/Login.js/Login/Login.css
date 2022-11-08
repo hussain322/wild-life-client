@@ -7,3 +7,7 @@
   background-size: cover;
   background-attachment: fixed;
 }
+
+.form-container {
+  background: linear-gradient(#317594 0%, rgba(21, 21, 21, 0) 100%);
+}
