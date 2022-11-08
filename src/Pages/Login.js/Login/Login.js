@@ -52,7 +52,7 @@ const Login = () => {
         <div className="pt-4 text-center">
           <button className="btn btn-primary">
             <img src={googleIcon} alt="" className="w-5 mr-4" />
-            sign up with google
+            sign in with google
           </button>
         </div>
       </div>

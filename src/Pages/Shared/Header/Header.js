@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import logo from "../../../assets/icons/logo.png";
 
 const Header = () => {
   return (
@@ -40,13 +41,15 @@ const Header = () => {
             </ul>
           </div>
           <Link className="btn btn-ghost normal-case text-xl">
-            Wild Photographer
+            <img src={logo} alt="" className="w-16" />
+            <span className="text-green-700">WildLife</span>
+            <p>wild photographer</p>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0 font-semibold">
             <li>
-              <NavLink to="/" className="bg-green-600 py-2 px-4">
+              <NavLink to="/" className=" py-2 px-4">
                 Home
               </NavLink>
             </li>
