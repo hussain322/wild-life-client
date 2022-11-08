@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import googleIcon from "../../../assets/icons/1534129544.svg";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const SignUp = () => {
+  const [error, setError] = useState("");
+  const { createUser } = useContext(AuthContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    if (password.length < 6) {
+      setError("Your password must be 6 character or long");
+    }
+
+    // Create User
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        alert("login Successful");
+        form.reset();
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.code.slice(5));
+      });
+  };
   return (
     <div className="login-container">
       <div className="w-5/6 md:w-1/2 lg:w-[35%] mx-auto pt-10">
-        <form className="pt-10 form-container p-10">
+        <form onSubmit={handleSubmit} className="pt-10 form-container p-10">
           <h1 className="text-4xl font-bold text-white text-center">Sign Up</h1>
           <div className="form-control">
             <label className="label">
@@ -57,9 +84,13 @@ const SignUp = () => {
                 Accept Terms And Conditions
               </p>
             </label>
+            <p className="text-red-500">{error}</p>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-600">
+            <button
+              type="submit"
+              className="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-600"
+            >
               Sign Up
             </button>
           </div>

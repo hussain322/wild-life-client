@@ -1,20 +1,43 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import googleIcon from "../../../assets/icons/1534129544.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const { login } = useContext(AuthContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        alert("login successful");
+        form.reset();
+        setError("");
+      })
+      .catch((err) => {
+        setError(err.code.slice(5));
+      });
+  };
   return (
     <div className="login-container">
       <div className="w-5/6 md:w-1/2 lg:w-[35%] mx-auto pt-20">
-        <form className="pt-10 form-container p-10">
+        <form onSubmit={handleSubmit} className="pt-10 form-container p-10">
           <h1 className="text-4xl font-bold text-white text-center">Login</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text text-white">Email</span>
             </label>
             <input
-              type="text"
+              type="email"
+              name="email"
               placeholder="email"
               className="input input-bordered"
             />
@@ -24,7 +47,8 @@ const Login = () => {
               <span className="label-text text-white">Password</span>
             </label>
             <input
-              type="text"
+              type="password"
+              name="password"
               placeholder="password"
               className="input input-bordered"
             />
@@ -33,9 +57,13 @@ const Login = () => {
                 Forgot password?
               </p>
             </label>
+            <p className="text-red-500">{error}</p>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-600">
+            <button
+              type="submit"
+              className="btn bg-green-600 hover:bg-green-700 border-green-600 hover:border-green-600"
+            >
               Login
             </button>
           </div>
