@@ -40,10 +40,14 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl">
+          <Link to="/" className="normal-case text-xl flex">
             <img src={logo} alt="" className="w-16" />
-            <span className="text-green-700">WildLife</span>
-            <p>wild photographer</p>
+            <div>
+              <span className="text-green-700 font-semibold">WildLife</span>
+              <p className="text-sm p-0">
+                <small className="-tracking-tighter">photography</small>
+              </p>
+            </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
