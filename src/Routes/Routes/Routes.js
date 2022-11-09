@@ -5,6 +5,7 @@ import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login.js/Login/Login";
 import SignUp from "../../Pages/Login.js/SignUp/SignUp";
+import MyReview from "../../Pages/MyReview/MyReview";
 import ServiceDetails from "../../Pages/Services/ServiceDetails";
 import Services from "../../Pages/Services/Services";
 
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
         element: <ServiceDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path: "/myReviews",
+        element: <MyReview />,
       },
     ],
   },

@@ -4,7 +4,7 @@ import { Link, useRouteError } from "react-router-dom";
 const ErrorPage = () => {
   const error = useRouteError();
   return (
-    <section className="flex items-center h-screen p-16 bg-gradient-to-r from-indigo-500 text-gray-900">
+    <section className="flex items-center h-screen p-16 bg-gradient-to-r from-green-500 text-gray-900">
       <div className="max-w-md text-center">
         <h2 className="mb-8 font-extrabold text-9xl text-gray-600">
           {error && (

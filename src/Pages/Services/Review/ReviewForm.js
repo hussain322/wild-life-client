@@ -21,6 +21,7 @@ const ReviewForm = ({ service }) => {
       ratings,
       message,
       name,
+      email,
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",
@@ -97,7 +98,7 @@ const ReviewForm = ({ service }) => {
           ></textarea>
           <div className="mt-4 text-center">
             <button type="submit" className="btn btn-primary px-10">
-              your review
+              Add your review
             </button>
           </div>
         </form>

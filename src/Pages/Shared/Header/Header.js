@@ -46,6 +46,9 @@ const Header = () => {
               <li>
                 <NavLink to="/blog">Blog</NavLink>
               </li>
+              <li>
+                <NavLink to="/myReviews">My Reviews</NavLink>
+              </li>
             </ul>
           </div>
           <Link to="/" className="normal-case text-xl flex">
@@ -70,6 +73,9 @@ const Header = () => {
             </li>
             <li>
               <NavLink to="/blog">Blog</NavLink>
+            </li>
+            <li>
+              <NavLink to="/myReviews">My Reviews</NavLink>
             </li>
             <li>
               <Link>{user?.displayName}</Link>
