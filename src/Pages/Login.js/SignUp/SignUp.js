@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import googleIcon from "../../../assets/icons/1534129544.svg";
@@ -5,7 +6,10 @@ import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleLogin } = useContext(
+    AuthContext
+  );
+  const googleProvider = new GoogleAuthProvider();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,6 +45,15 @@ const SignUp = () => {
     updateUserProfile(profile)
       .then((result) => {
         alert("profile updated successfully");
+      })
+      .catch((err) => alert(err.message));
+  };
+
+  //Google Login
+  const handleGoogleLogin = () => {
+    googleLogin(googleProvider)
+      .then((res) => {
+        alert("Login successful");
       })
       .catch((err) => alert(err.message));
   };
@@ -117,7 +130,7 @@ const SignUp = () => {
           </div>
           <p className="text-white text-center pt-2">or</p>
           <div className="pt-4 text-center">
-            <button className="btn btn-primary">
+            <button onClick={handleGoogleLogin} className="btn btn-primary">
               <img src={googleIcon} alt="" className="w-5 mr-4" />
               sign in with google
             </button>

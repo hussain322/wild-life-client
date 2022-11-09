@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../../../assets/icons/logo.png";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="shadow-lg">
       <div className="navbar w-[90%] mx-auto bg-transparent">
@@ -63,15 +71,33 @@ const Header = () => {
             <li>
               <NavLink to="/blog">Blog</NavLink>
             </li>
+            <li>
+              <Link>{user?.displayName}</Link>
+            </li>
+            <li>
+              <Link>
+                <img src={user?.photoURL} alt="" className="w-8 rounded-full" />
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link
-            to="/login"
-            className="bg-green-600 py-2 px-4 rounded-lg font-semibold text-white hover:bg-green-700"
-          >
-            Sign In
-          </Link>
+          {user?.uid ? (
+            <Link
+              onClick={handleLogOut}
+              to="/login"
+              className="bg-green-600 py-2 px-4 rounded-lg font-semibold text-white hover:bg-green-700"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="bg-green-600 py-2 px-4 rounded-lg font-semibold text-white hover:bg-green-700"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </div>
     </div>
