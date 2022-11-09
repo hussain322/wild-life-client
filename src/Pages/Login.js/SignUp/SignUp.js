@@ -1,5 +1,6 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import googleIcon from "../../../assets/icons/1534129544.svg";
 import { AuthContext } from "../../../Contexts/AuthProvider";
@@ -27,7 +28,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        alert("login Successful");
+        toast.success("Successfully Logged in!");
         form.reset();
         setError("");
         handleUpdateUserProfile(name, photoURL);
@@ -44,7 +45,7 @@ const SignUp = () => {
     };
     updateUserProfile(profile)
       .then((result) => {
-        alert("profile updated successfully");
+        toast.success("profile updated successfully");
       })
       .catch((err) => alert(err.message));
   };
@@ -53,9 +54,9 @@ const SignUp = () => {
   const handleGoogleLogin = () => {
     googleLogin(googleProvider)
       .then((res) => {
-        alert("Login successful");
+        toast.success("Successfully Logged in!");
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => toast.error(err.code.slice(5)));
   };
 
   return (
@@ -122,20 +123,20 @@ const SignUp = () => {
               Sign Up
             </button>
           </div>
-          <div className="text-white pt-4">
+          <div className="text-white pt-2">
             Already Have an Account?
             <Link to="/login" className="font-semibold ml-2">
               Login
             </Link>
           </div>
           <p className="text-white text-center pt-2">or</p>
-          <div className="pt-4 text-center">
-            <button onClick={handleGoogleLogin} className="btn btn-primary">
-              <img src={googleIcon} alt="" className="w-5 mr-4" />
-              sign in with google
-            </button>
-          </div>
         </form>
+        <div className="pb-4 text-center">
+          <button onClick={handleGoogleLogin} className="btn btn-primary">
+            <img src={googleIcon} alt="" className="w-5 mr-4" />
+            sign in with google
+          </button>
+        </div>
       </div>
     </div>
   );

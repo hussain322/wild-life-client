@@ -3,10 +3,13 @@ import "./Login.css";
 import googleIcon from "../../../assets/icons/1534129544.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import toast from "react-hot-toast";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +21,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        alert("login successful");
+        toast.success("Successfully Login!");
         form.reset();
         setError("");
       })
@@ -26,6 +29,16 @@ const Login = () => {
         setError(err.code.slice(5));
       });
   };
+
+  //google login
+  const handleGoogleLogin = () => {
+    googleLogin(googleProvider)
+      .then((res) => {
+        toast.success("Successfully Logged in!");
+      })
+      .catch((err) => toast.error(err.code.slice(5)));
+  };
+
   return (
     <div className="login-container">
       <div className="w-5/6 md:w-1/2 lg:w-[35%] mx-auto pt-20">
@@ -74,13 +87,13 @@ const Login = () => {
             </Link>
           </div>
           <p className="text-white text-center pt-2">or</p>
-          <div className="pt-4 text-center">
-            <button className="btn btn-primary">
-              <img src={googleIcon} alt="" className="w-5 mr-4" />
-              sign in with google
-            </button>
-          </div>
         </form>
+        <div onClick={handleGoogleLogin} className="pt-4 text-center">
+          <button className="btn btn-primary">
+            <img src={googleIcon} alt="" className="w-5 mr-4" />
+            sign in with google
+          </button>
+        </div>
       </div>
     </div>
   );
