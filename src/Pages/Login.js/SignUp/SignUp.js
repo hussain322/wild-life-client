@@ -5,7 +5,8 @@ import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const SignUp = () => {
   const [error, setError] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -25,11 +26,25 @@ const SignUp = () => {
         alert("login Successful");
         form.reset();
         setError("");
+        handleUpdateUserProfile(name, photoURL);
       })
       .catch((err) => {
         setError(err.code.slice(5));
       });
   };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then((result) => {
+        alert("profile updated successfully");
+      })
+      .catch((err) => alert(err.message));
+  };
+
   return (
     <div className="login-container">
       <div className="w-5/6 md:w-1/2 lg:w-[35%] mx-auto pt-10">

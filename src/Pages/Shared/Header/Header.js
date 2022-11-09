@@ -5,7 +5,7 @@ import logo from "../../../assets/icons/logo.png";
 
 const Header = () => {
   return (
-    <div>
+    <div className="shadow-lg">
       <div className="navbar w-[90%] mx-auto bg-transparent">
         <div className="navbar-start">
           <div className="dropdown">
