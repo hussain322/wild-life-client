@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
+import useTitle from "../../../Hooks/useTitle";
 
 const Login = () => {
   const [error, setError] = useState("");
   const { login, googleLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  useTitle("Login");
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -1,9 +1,11 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const Service = ({ service }) => {
   const { _id, title, img, description, price } = service;
+  useTitle("Service");
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
       <figure>

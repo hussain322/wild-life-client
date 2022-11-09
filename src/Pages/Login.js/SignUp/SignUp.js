@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import googleIcon from "../../../assets/icons/1534129544.svg";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import useTitle from "../../../Hooks/useTitle";
 
 const SignUp = () => {
   const [error, setError] = useState("");
@@ -11,6 +12,7 @@ const SignUp = () => {
     AuthContext
   );
   const googleProvider = new GoogleAuthProvider();
+  useTitle("Signup");
 
   const handleSubmit = (event) => {
     event.preventDefault();

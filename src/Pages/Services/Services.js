@@ -1,10 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import Service from "./Service";
 
 const Services = () => {
   const services = useLoaderData();
-  console.log(services);
+  useTitle("Services");
   return (
     <div className="my-10">
       <h1 className="font-bold text-5xl text-center">My Services</h1>

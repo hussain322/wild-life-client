@@ -2,11 +2,14 @@ import React from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 import PeopleReviews from "./Review/PeopleReviews";
+import ReviewForm from "./Review/ReviewForm";
 
 const ServiceDetails = () => {
   const service = useLoaderData();
   const { title, img, ratings, description, price, category } = service;
+  useTitle("Service Details");
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-[90%] mx-auto my-14">
@@ -41,6 +44,7 @@ const ServiceDetails = () => {
       </div>
 
       <PeopleReviews />
+      <ReviewForm service={service} />
     </div>
   );
 };
