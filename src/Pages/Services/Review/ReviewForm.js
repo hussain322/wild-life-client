@@ -13,15 +13,17 @@ const ReviewForm = ({ service }) => {
     const phone = form.phone.value;
     const ratings = form.ratings.value;
     const message = form.message.value;
-    console.log(name, email, phone, ratings, message);
+    const image = user?.photoURL;
 
     const review = {
       service: _id,
+      createdTime: new Date().toISOString(),
       serviceName: title,
       ratings,
       message,
       name,
       email,
+      image,
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",

@@ -7,8 +7,9 @@ import PeopleReviews from "./Review/PeopleReviews";
 import ReviewForm from "./Review/ReviewForm";
 
 const ServiceDetails = () => {
+  useTitle("Service Details");
   const service = useLoaderData();
-  const { title, img, ratings, description, price, category } = service;
+  const { title, img, ratings, description, price, category, _id } = service;
   useTitle("Service Details");
   return (
     <div>
@@ -43,7 +44,7 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      <PeopleReviews />
+      <PeopleReviews _id={_id} />
       <ReviewForm service={service} />
     </div>
   );

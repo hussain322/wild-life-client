@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaStar, FaStarHalfAlt, FaUser } from "react-icons/fa";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 
-const PeopleReviews = () => {
+const PeopleReviews = ({ _id }) => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch(`http://localhost:5000/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -38,10 +38,11 @@ const PeopleReviews = () => {
             </div>
             <h2 className="text-lg font-bold flex justify-center">
               Author:
-              <p className="text-xl mx-2">
+              <img src={review.image} alt="" className="w-10 rounded-full" />
+              {/* <p className="text-xl mx-2">
                 <FaUser />
-              </p>
-              {review.email}
+              </p> */}
+              {review.name}
             </h2>
           </div>
         ))}

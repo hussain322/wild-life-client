@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const Update = () => {
+  useTitle("Update Reviews");
   const storeReview = useLoaderData();
-  //   const { ratings, message } = storeReview;
   const [review, setReview] = useState(storeReview);
 
   const handleUpdateSubmit = (event) => {
     event.preventDefault();
-    // const ratings = event.target.ratings.value;
-    // const message = event.target.message.value;
     console.log(review);
 
     fetch(`http://localhost:5000/reviews/${storeReview._id}`, {
