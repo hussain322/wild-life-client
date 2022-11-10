@@ -6,9 +6,6 @@ const PeopleReviews = ({ _id }) => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
 
-  // const newId = reviews.filter((review) => review._id);
-  // console.log(newId);
-
   useEffect(() => {
     fetch(`https://wild-life-server.vercel.app/reviews`)
       .then((res) => res.json())
