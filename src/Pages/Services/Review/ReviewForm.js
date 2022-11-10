@@ -40,7 +40,7 @@ const ReviewForm = ({ service }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="w-[90%] lg:w-3/4 mx-auto my-20">
+    <div className="w-[90%] lg:w-3/4 mx-auto mb-20">
       {user?.uid ? (
         <form onSubmit={handleReview}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -84,7 +84,7 @@ const ReviewForm = ({ service }) => {
                 <span className="label-text">Your Ratings</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="ratings"
                 placeholder="out of 5"
                 className="input input-bordered"
