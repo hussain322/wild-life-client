@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
 import googleIcon from "../../../assets/icons/1534129544.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 import toast from "react-hot-toast";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -12,6 +12,10 @@ const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   useTitle("Login");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +30,7 @@ const Login = () => {
         toast.success("Successfully Login!");
         form.reset();
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         setError(err.code.slice(5));
@@ -37,6 +42,7 @@ const Login = () => {
     googleLogin(googleProvider)
       .then((res) => {
         toast.success("Successfully Logged in!");
+        navigate(from, { replace: true });
       })
       .catch((err) => toast.error(err.code.slice(5)));
   };

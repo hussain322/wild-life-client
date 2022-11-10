@@ -79,9 +79,14 @@ const Header = () => {
               <NavLink to="/blog">Blog</NavLink>
             </li>
             {user?.uid ? (
-              <li>
-                <NavLink to="/myReviews">My Reviews</NavLink>
-              </li>
+              <>
+                <li>
+                  <NavLink to="/myReviews">My Reviews</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/addService">Add Service</NavLink>
+                </li>
+              </>
             ) : (
               ""
             )}

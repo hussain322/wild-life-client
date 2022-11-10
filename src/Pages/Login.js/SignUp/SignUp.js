@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleIcon from "../../../assets/icons/1534129544.svg";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
@@ -13,6 +13,10 @@ const SignUp = () => {
   );
   const googleProvider = new GoogleAuthProvider();
   useTitle("Signup");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -33,6 +37,7 @@ const SignUp = () => {
         toast.success("Successfully Logged in!");
         form.reset();
         setError("");
+        navigate(from, { replace: true });
         handleUpdateUserProfile(name, photoURL);
       })
       .catch((err) => {
@@ -57,6 +62,7 @@ const SignUp = () => {
     googleLogin(googleProvider)
       .then((res) => {
         toast.success("Successfully Logged in!");
+        navigate(from, { replace: true });
       })
       .catch((err) => toast.error(err.code.slice(5)));
   };

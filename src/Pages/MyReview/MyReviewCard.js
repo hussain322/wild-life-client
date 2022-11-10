@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
@@ -26,7 +26,17 @@ const MyReviewCard = ({ review, handleDelete }) => {
       </div>
       <h2 className="text-lg font-bold flex justify-center">
         Author:
-        <img src={user?.photoURL} alt="" className="w-6 rounded-full mx-6" />
+        <>
+          {user.photoURL ? (
+            <img
+              src={user?.photoURL}
+              alt=""
+              className="w-6 rounded-full mx-6"
+            />
+          ) : (
+            <FaUser className="text-xl mx-6" />
+          )}
+        </>
         {name}
       </h2>
       <div className="mt-6">
