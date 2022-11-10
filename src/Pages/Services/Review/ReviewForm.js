@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const ReviewForm = ({ service }) => {
@@ -109,7 +110,11 @@ const ReviewForm = ({ service }) => {
         </form>
       ) : (
         <h1 className="text-2xl font-semibold text-center">
-          Please login to add a review{" "}
+          Please{" "}
+          <Link to="/login" className="text-blue-600">
+            login
+          </Link>{" "}
+          to add a review{" "}
         </h1>
       )}
     </div>

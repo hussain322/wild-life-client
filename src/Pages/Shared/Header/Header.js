@@ -95,14 +95,6 @@ const Header = () => {
             ) : (
               ""
             )}
-            <li>
-              <Link>{user?.displayName}</Link>
-            </li>
-            <li>
-              <Link>
-                <img src={user?.photoURL} alt="" className="w-8 rounded-full" />
-              </Link>
-            </li>
           </ul>
         </div>
         <div className="navbar-end">
