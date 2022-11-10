@@ -7,11 +7,20 @@ import MyReviewCard from "./MyReviewCard";
 const MyReview = () => {
   useTitle("My Reviews");
   const [reviews, setReviews] = useState([]);
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`https://wild-life-server.vercel.app/reviews?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`https://wild-life-server.vercel.app/reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("wild-life-token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          logOut();
+        }
+        return res.json();
+      })
       .then((data) => setReviews(data));
   }, [user?.email]);
 

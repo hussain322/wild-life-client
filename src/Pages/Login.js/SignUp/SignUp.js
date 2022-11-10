@@ -39,6 +39,26 @@ const SignUp = () => {
         setError("");
         navigate(from, { replace: true });
         handleUpdateUserProfile(name, photoURL);
+
+        const currentUser = {
+          email: user.email,
+        };
+
+        //get jwt token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            //set local storage
+            localStorage.setItem("wild-life-token", data.token);
+          });
       })
       .catch((err) => {
         setError(err.code.slice(5));
