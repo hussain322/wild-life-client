@@ -25,7 +25,7 @@ const ReviewForm = ({ service }) => {
       email,
       image,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://wild-life-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -56,6 +56,7 @@ const ReviewForm = ({ service }) => {
                 placeholder="Your Name"
                 defaultValue={user?.displayName}
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -68,6 +69,7 @@ const ReviewForm = ({ service }) => {
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
+                readOnly
               />
             </div>
             <div className="form-control">
@@ -90,6 +92,7 @@ const ReviewForm = ({ service }) => {
                 name="ratings"
                 placeholder="out of 5"
                 className="input input-bordered"
+                required
               />
             </div>
           </div>

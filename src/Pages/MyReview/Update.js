@@ -12,7 +12,7 @@ const Update = () => {
     event.preventDefault();
     console.log(review);
 
-    fetch(`http://localhost:5000/reviews/${storeReview._id}`, {
+    fetch(`https://wild-life-server.vercel.app/reviews/${storeReview._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

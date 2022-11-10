@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaStar, FaStarHalfAlt, FaUser } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const PeopleReviews = ({ _id }) => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
 
+  // const newId = reviews.filter((review) => review._id);
+  // console.log(newId);
+
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews`)
+    fetch(`https://wild-life-server.vercel.app/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
@@ -39,9 +42,6 @@ const PeopleReviews = ({ _id }) => {
             <h2 className="text-lg font-bold flex justify-center">
               Author:
               <img src={review.image} alt="" className="w-10 rounded-full" />
-              {/* <p className="text-xl mx-2">
-                <FaUser />
-              </p> */}
               {review.name}
             </h2>
           </div>

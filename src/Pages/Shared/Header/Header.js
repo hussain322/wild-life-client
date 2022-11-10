@@ -41,15 +41,20 @@ const Header = () => {
                 <NavLink to="/home">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/services">Services</NavLink>
+                <NavLink to="/services">My Services</NavLink>
               </li>
               <li>
                 <NavLink to="/blog">Blog</NavLink>
               </li>
               {user?.uid ? (
-                <li>
-                  <NavLink to="/myReviews">My Reviews</NavLink>
-                </li>
+                <>
+                  <li>
+                    <NavLink to="/myReviews">My Reviews</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/addService">Add Service</NavLink>
+                  </li>
+                </>
               ) : (
                 ""
               )}
@@ -73,7 +78,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="mx-4">
-              <NavLink to="/services">Services</NavLink>
+              <NavLink to="/services">My Services</NavLink>
             </li>
             <li>
               <NavLink to="/blog">Blog</NavLink>

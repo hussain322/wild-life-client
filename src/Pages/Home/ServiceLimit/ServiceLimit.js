@@ -6,7 +6,7 @@ const ServiceLimit = () => {
   const [limitedService, setLimitedService] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services/limit")
+    fetch("https://wild-life-server.vercel.app/services/limit")
       .then((res) => res.json())
       .then((data) => setLimitedService(data));
   }, [setLimitedService]);

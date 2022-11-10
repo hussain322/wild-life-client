@@ -41,13 +41,13 @@ export const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://wild-life-server.vercel.app/services"),
       },
       {
         path: "/serviceDetails/:id",
         element: <ServiceDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://wild-life-server.vercel.app/services/${params.id}`),
       },
       {
         path: "/myReviews",
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
         path: "/update/:id",
         element: <Update />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(`https://wild-life-server.vercel.app/reviews/${params.id}`),
       },
       {
         path: "/addService",
