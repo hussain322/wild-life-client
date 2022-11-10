@@ -25,7 +25,7 @@ const AddService = () => {
       description,
       img,
     };
-    fetch("http://localhost:5000/services", {
+    fetch("https://wild-life-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

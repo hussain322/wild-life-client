@@ -45,7 +45,7 @@ const SignUp = () => {
         };
 
         //get jwt token
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://wild-life-server.vercel.app//jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
