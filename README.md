@@ -18,12 +18,6 @@ All form are dynamic also implement google and github signIn method.
 
 My Service and My Reviews pages are Private pages. If you are not a user you can't see those pages if you see those pages you must be login.
 
-## API
-
-- Link -> [https://e-learning-server-seven.vercel.app/courses](https://e-learning-server-seven.vercel.app/courses)
-
-- Api Link By Id -> [https://e-learning-server-seven.vercel.app/course/\${id}](https://e-learning-server-seven.vercel.app/course/1)
-
 ## React Router Dom v6.4
 
 - Documentation Link -> [React Router Dom](https://reactrouter.com/en/main/start/overview)
@@ -46,6 +40,6 @@ My Service and My Reviews pages are Private pages. If you are not a user you can
 
 ## _Live Website Link_ :
 
-Hosted in Firebase -> [E-Learning](https://e-learning-client-ccc81.web.app/)
+Hosted in Firebase -> [Wild Life Photography](https://wild-life-77942.web.app/)
 
-[https://e-learning-client-ccc81.web.app/](https://e-learning-client-ccc81.web.app/)
+[https://wild-life-77942.web.app/](https://wild-life-77942.web.app/)
